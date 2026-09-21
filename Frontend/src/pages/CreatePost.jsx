@@ -65,10 +65,10 @@ const CreatePost = () => {
       formData.append("image", image);
       formData.append("caption", caption);
 
-      await axios.post(
-        "http://localhost:5000/create-post",
-        formData
-      );
+      axios.post(
+  `${import.meta.env.VITE_API_URL}/create-post`,
+  formData
+)
 
       navigate("/Feed");
 

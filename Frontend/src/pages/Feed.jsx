@@ -14,8 +14,7 @@ const Feed = () => {
 
   // Fetch posts
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/posts")
+    axios.get(`${import.meta.env.VITE_API_URL}/posts`)
       .then((res) => {
         setPosts(res.data.posts || []);
       })
@@ -40,7 +39,7 @@ const Feed = () => {
       setDeletingPost(postId);
       setOpenMenu(null);
 
-      await axios.delete(`http://localhost:5000/posts/${postId}`);
+      axios.delete(`${import.meta.env.VITE_API_URL}/posts/${postId}`);
 
       // Remove only the deleted post from UI
       setPosts((prevPosts) =>
